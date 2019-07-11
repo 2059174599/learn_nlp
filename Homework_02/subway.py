@@ -36,7 +36,15 @@ def items(test): # turn it into dict
             lin_site.append(i)
     #print(lin_site)
     len_site = len(test)
-    {sites.setdefault(test[i],[]).append(test[i+1]) for i in range(len_site-1) if i not in lin_site}
+    {sites.setdefault(test[i],[]).append(test[i+1]) for i in range(len_site-1) if i not in lin_site and i+1 not in lin_site}
+    test_1 = list(reversed(test))
+    lin_site_1 = []
+    for i ,j in enumerate(test_1):
+        if '线' in j:
+            lin_site_1.append(i)
+    #print(lin_site)
+    {sites.setdefault(test_1[i],[]).append(test_1[i+1]) for i in range(len_site-1) if i not in lin_site_1 and i+1 not in lin_site_1}
+    
     print(sites)
 
 def main(url):
